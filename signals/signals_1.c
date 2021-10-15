@@ -11,6 +11,9 @@
  * action, we need to read linux sys programming book 
  * 
  * 
+ * slide 
+ * http://courses.cms.caltech.edu/cs124/lectures-wi2016/CS124Lec15.pdf
+ * 
  * man pages 
  * https://man7.org/linux/man-pages/man2/kill.2.html
  * https://man7.org/linux/man-pages/man2/signal.2.html
