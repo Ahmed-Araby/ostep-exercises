@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 {
     printf("pipe program, pipe_2.c \n");
 
-    int pipe_fd[2]; // having garpage
+    int pipe_fd[2]; // have garpage
     int ps = pipe(pipe_fd);
     if (ps != 0)
     {
@@ -26,44 +26,27 @@ int main(int argc, char *argv[])
 
     else if (cpid == 0)
     {
-        close(pipe_fd[1]); // close writing end of the pipe
-        char message;      // point at null
-        printf("message is : ");
-
-        while (true)
+        char buf;
+        close(pipe_fd[1]); // as this point to the same open end of the file we need to close it also, other wise the read will be blocked.
+        while (read(pipe_fd[0], &buf, 1) > 0)
         {
-            int bytesCnt = read(pipe_fd[0], &message, 1); // this should be blocking function call
-            if (bytesCnt <= 0)
-            {
-                printf("\nchild process finished reading \n");
-                break;
-            }
-            else
-            {
-                printf("%c", message);
-            }
+            printf("%c", buf);
+            fflush(stdout);
         }
-        // printf("\n");
+        // close(pipe_fd[0]);
+
+        printf("\n %d - %d \n", pipe_fd[0], pipe_fd[1]);
+        fflush(stdout);
     }
     else
     {
         // parent process
-        close(pipe_fd[0]);    // I will never read what I wrote
-        char *message = "ab"; // this will implictly put null char at the end
+        char *message = "abaaaaaaaaaaaaaaaaaaaaa"; // this will implictly put null char at the end
+        // close(pipe_fd[0]);
         int bytesCnt = write(pipe_fd[1], message, strlen(message));
-        if (bytesCnt != strlen(message))
-        {
-            printf("parent process failed to write the message \n");
-            exit(1);
-        }
-
+        close(pipe_fd[1]); // if this is not closed, child process that reads from the pipe will hang waiting for more data
         printf("parent finished writing \n");
-        // int wcpid = wait(NULL);
-        // if (wcpid == -1)
-        // {
-        //     printf("failed to wait for the child process \n");
-        //     exit(1);
-        // }
+        wait(NULL);
     }
     return 0;
 }
