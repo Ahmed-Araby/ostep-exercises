@@ -18,6 +18,6 @@ implemented during my study for "Operating Systems: Three Easy Pieces" book.
 
 ### my notes
 * #### study session #1
-  * [study session1](https://docs.google.com/document/d/1gYyEuf_8YhQ28jbhnH150_HsoRnPBNwaEBYhBGEW8Kg/edit)
+  * [study session notes](https://docs.google.com/document/d/1gYyEuf_8YhQ28jbhnH150_HsoRnPBNwaEBYhBGEW8Kg/edit)
   * [questions from the study session](https://docs.google.com/document/d/1pBg1EbzbM4VeLgnxthvhkE_NQn8soXRnUkPJHkkM17E/edit)
 * #### study session #2
