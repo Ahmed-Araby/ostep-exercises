@@ -14,6 +14,9 @@
  * man pages 
  * https://man7.org/linux/man-pages/man2/kill.2.html
  * https://man7.org/linux/man-pages/man2/signal.2.html
+ * 
+ * signals 
+ * https://bash.cyberciti.biz/guide/Sending_signal_to_Processes
  * */
 
 #include <signal.h>
